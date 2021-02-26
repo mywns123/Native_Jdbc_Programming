@@ -13,16 +13,16 @@ import Native_Jdbc_Programming.dto.Employee;
 import Native_Jdbc_Programming.dto.Title;
 import Native_Jdbc_Programming.util.jdbcUtil;
 
-public class EmployeeDaoImpl implements EmployeeDao {
+public class EmployeeDaoImpl111111 implements EmployeeDao {
 
-	private static EmployeeDaoImpl instance = new EmployeeDaoImpl();
+	private static EmployeeDaoImpl111111 instance = new EmployeeDaoImpl111111();
 
-	private EmployeeDaoImpl() {
+	private EmployeeDaoImpl111111() {
 	}
 
-	public static EmployeeDaoImpl getInstance() {
+	public static EmployeeDaoImpl111111 getInstance() {
 		if(instance == null) {
-			instance = new EmployeeDaoImpl();
+			instance = new EmployeeDaoImpl111111();
 		}
 		return instance;
 	}

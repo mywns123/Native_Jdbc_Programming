@@ -13,16 +13,16 @@ import Native_Jdbc_Programming.dto.Employee;
 import Native_Jdbc_Programming.dto.Title;
 import Native_Jdbc_Programming.util.jdbcUtil;
 
-public class vw_full_employeeImpl implements EmployeeDao {
+public class employeeImpl implements EmployeeDao {
 
-	private static vw_full_employeeImpl instance = new vw_full_employeeImpl();
+	private static employeeImpl instance = new employeeImpl();
 
-	private vw_full_employeeImpl() {
+	private employeeImpl() {
 	}
 
-	public static vw_full_employeeImpl getInstance() {
+	public static employeeImpl getInstance() {
 		if(instance == null) {
-			instance = new vw_full_employeeImpl();
+			instance = new employeeImpl();
 		}
 		return instance;
 	}

@@ -8,15 +8,15 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import Native_Jdbc_Programming.dao.impl.EmployeeDaoImpl;
+import Native_Jdbc_Programming.dao.impl.EmployeeDaoImpl111111;
 import Native_Jdbc_Programming.dto.Department;
 import Native_Jdbc_Programming.dto.Employee;
 import Native_Jdbc_Programming.dto.Title;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class EmployeeDaoTest {
+public class EmployeeDao11111Test {
 
-private static EmployeeDao dao = EmployeeDaoImpl.getInstance();
+private static EmployeeDao dao = EmployeeDaoImpl111111.getInstance();
 	@After
 	public void tearDown() throws Exception {
 		System.out.println();

@@ -14,6 +14,7 @@ import Native_Jdbc_Programming.dto.Department;
 public class DepartmentDaoTest {
 	
 	private static DepartmentDao dao = DepartmentDaoImpl.getInstance();;
+	
 	@After
 	public void tearDown() throws Exception {
 		System.out.println();

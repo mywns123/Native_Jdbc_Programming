@@ -6,14 +6,14 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 
-import Native_Jdbc_Programming.dao.impl.employeeImpl;
+import Native_Jdbc_Programming.dao.impl.EmployeeImpl;
 import Native_Jdbc_Programming.dto.Department;
 import Native_Jdbc_Programming.dto.Employee;
 import Native_Jdbc_Programming.dto.Title;
 
 public class employeeTest {
 
-	private static employeeImpl dao = employeeImpl.getInstance();
+	private static EmployeeImpl dao = EmployeeImpl.getInstance();
 	@After
 	public void tearDown() throws Exception {
 	}

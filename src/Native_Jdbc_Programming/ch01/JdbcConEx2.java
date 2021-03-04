@@ -3,7 +3,6 @@ package Native_Jdbc_Programming.ch01;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -17,7 +16,7 @@ public class JdbcConEx2 {
 	public static void main(String[] args) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
+//		ResultSet rs = null;
 		ArrayList<Department> list = new ArrayList<>();
 
 		try {

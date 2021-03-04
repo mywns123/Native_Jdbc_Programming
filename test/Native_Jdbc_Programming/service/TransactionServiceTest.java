@@ -1,7 +1,5 @@
 package Native_Jdbc_Programming.service;
 
-import static org.junit.Assert.fail;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -13,6 +11,7 @@ import Native_Jdbc_Programming.dto.Department;
 import Native_Jdbc_Programming.dto.Title;
 import junit.framework.Assert;
 
+@SuppressWarnings("deprecation")
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TransactionServiceTest {
 	private static TransactionService service;

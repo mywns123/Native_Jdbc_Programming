@@ -7,7 +7,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-public class jdbcUtil {
+public class jdbcConn {
 	/*
 	 * public static void main(String[] args) { Connection con =
 	 * jdbcUtil.getConnection(); System.out.println("con > "+ con); }

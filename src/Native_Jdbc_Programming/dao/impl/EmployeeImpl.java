@@ -11,7 +11,7 @@ import Native_Jdbc_Programming.dao.EmployeeDao;
 import Native_Jdbc_Programming.dto.Department;
 import Native_Jdbc_Programming.dto.Employee;
 import Native_Jdbc_Programming.dto.Title;
-import Native_Jdbc_Programming.util.jdbcUtil;
+import Native_Jdbc_Programming.util.jdbcConn;
 
 public class EmployeeImpl implements EmployeeDao {
 
@@ -31,7 +31,7 @@ public class EmployeeImpl implements EmployeeDao {
 	public List<Employee> selectEmployeeByAll() {
 		String sql = "select empNo,empName,title_no,title_name,manager_no,manager_name,salary,dept_no,dept_name,floor"
 				   + " from vw_full_employee";
-		try (Connection con = jdbcUtil.getConnection();
+		try (Connection con = jdbcConn.getConnection();
 				PreparedStatement std = con.prepareStatement(sql);
 				ResultSet rs = std.executeQuery()) {
 			if (rs.next()) {
@@ -79,7 +79,7 @@ public class EmployeeImpl implements EmployeeDao {
 		String sql = "select empNo, empName, title as title_no ,manager as manager_no ,salary,dept as dept_no" +
 				     " from employee" +  
 				     " where empno = ?";
-		try (Connection con = jdbcUtil.getConnection();
+		try (Connection con = jdbcConn.getConnection();
 				PreparedStatement std = con.prepareStatement(sql);) {
 			std.setInt(1, employee.getEmpNo());
 			try (ResultSet rs = std.executeQuery()) {
@@ -96,7 +96,7 @@ public class EmployeeImpl implements EmployeeDao {
 	@Override
 	public int insertEmployee(Employee employee) {
 		String sql = "insert into employee  values(?,?,?,?,?,?);";
-		try (Connection con = jdbcUtil.getConnection(); PreparedStatement std = con.prepareStatement(sql);) {
+		try (Connection con = jdbcConn.getConnection(); PreparedStatement std = con.prepareStatement(sql);) {
 			std.setInt(1, employee.getEmpNo());
 			std.setString(2, employee.getEmpName());
 			std.setInt(3, employee.getTitle().gettNo());
@@ -115,7 +115,7 @@ public class EmployeeImpl implements EmployeeDao {
 		String sql = "update employee " + 
 					 " set empname = ?, title = ?, manager = ?, salary = ?, dept = ?" + 
 					 " where empno =?;";
-		try (Connection con = jdbcUtil.getConnection(); PreparedStatement std = con.prepareStatement(sql)) {
+		try (Connection con = jdbcConn.getConnection(); PreparedStatement std = con.prepareStatement(sql)) {
 			std.setString(1, employee.getEmpName());			
 			std.setInt(2, employee.getTitle().gettNo());
 			std.setInt(3, employee.getManager().getEmpNo());
@@ -134,7 +134,7 @@ public class EmployeeImpl implements EmployeeDao {
 		String sql = "delete" + 
 					 " from employee " + 
 					 " where empno = ?;";
-		try (Connection con = jdbcUtil.getConnection(); PreparedStatement std = con.prepareStatement(sql)) {
+		try (Connection con = jdbcConn.getConnection(); PreparedStatement std = con.prepareStatement(sql)) {
 			std.setInt(1, empNo);
 			return std.executeUpdate();
 		} catch (SQLException e) {

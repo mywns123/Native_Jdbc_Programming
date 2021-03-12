@@ -9,7 +9,7 @@ import java.util.List;
 
 import Native_Jdbc_Programming.dao.TitleDao;
 import Native_Jdbc_Programming.dto.Title;
-import Native_Jdbc_Programming.util.jdbcUtil;
+import Native_Jdbc_Programming.util.jdbcConn;
 
 public class TitleDaoImpl implements TitleDao {
 
@@ -25,7 +25,7 @@ public class TitleDaoImpl implements TitleDao {
 	@Override
 	public List<Title> selectTitleByAll() {
 		String sql = "select tno,tname from title";
-		try (Connection con = jdbcUtil.getConnection();
+		try (Connection con = jdbcConn.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				ResultSet rs = pstmt.executeQuery()) {
 			if (rs.next()) {
@@ -51,7 +51,7 @@ public class TitleDaoImpl implements TitleDao {
 	@Override
 	public Title selectTitleByNo(Title title) {
 		String sql = "select tno,tname from title where tno=?";
-		try (Connection con = jdbcUtil.getConnection();
+		try (Connection con = jdbcConn.getConnection();
 PreparedStatement pstmt = con.prepareStatement(sql)) {
 			pstmt.setInt(1, title.gettNo());
 //			System.out.println(pstmt);
@@ -69,7 +69,7 @@ PreparedStatement pstmt = con.prepareStatement(sql)) {
 	@Override
 	public int insertTitle(Title title) {
 		String sql = "insert into title values(?,?)";
-		try (Connection con = jdbcUtil.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql)) {
+		try (Connection con = jdbcConn.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql)) {
 			pstmt.setInt(1, title.gettNo());
 			pstmt.setString(2, title.gettName());
 			return pstmt.executeUpdate();
@@ -82,7 +82,7 @@ PreparedStatement pstmt = con.prepareStatement(sql)) {
 	@Override
 	public int updateTitle(Title title) {
 		String sql = "update  title  set tname =? where tno =?";
-		try (Connection con = jdbcUtil.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql)) {
+		try (Connection con = jdbcConn.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql)) {
 			pstmt.setString(1, title.gettName());
 			pstmt.setInt(2, title.gettNo());
 			return pstmt.executeUpdate();
@@ -95,7 +95,7 @@ PreparedStatement pstmt = con.prepareStatement(sql)) {
 	@Override
 	public int deleteTitle(int titleNo) {
 		String sql = "delete  from title where tno=?";
-		try (Connection con = jdbcUtil.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql)) {
+		try (Connection con = jdbcConn.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql)) {
 			pstmt.setInt(1, titleNo);
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {

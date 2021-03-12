@@ -11,7 +11,7 @@ import Native_Jdbc_Programming.dao.EmployeeDao;
 import Native_Jdbc_Programming.dto.Department;
 import Native_Jdbc_Programming.dto.Employee;
 import Native_Jdbc_Programming.dto.Title;
-import Native_Jdbc_Programming.util.jdbcUtil;
+import Native_Jdbc_Programming.util.jdbcConn;
 
 public class EmployeeDaoImpl111111 implements EmployeeDao {
 
@@ -30,7 +30,7 @@ public class EmployeeDaoImpl111111 implements EmployeeDao {
 	@Override
 	public List<Employee> selectEmployeeByAll() {
 		String sql = "select empNo,empName,title,manager,salary,dept from employee";
-		try (Connection con = jdbcUtil.getConnection();
+		try (Connection con = jdbcConn.getConnection();
 				PreparedStatement std = con.prepareStatement(sql);
 				ResultSet rs = std.executeQuery()) {
 			if (rs.next()) {
@@ -59,7 +59,7 @@ public class EmployeeDaoImpl111111 implements EmployeeDao {
 	@Override
 	public Employee selectEmployeeByNo(Employee employee) {
 		String sql = "select empNo,empName,title,manager,salary,dept from employee where empNo =?";
-		try (Connection con = jdbcUtil.getConnection(); PreparedStatement std = con.prepareStatement(sql);) {
+		try (Connection con = jdbcConn.getConnection(); PreparedStatement std = con.prepareStatement(sql);) {
 			std.setInt(1, employee.getEmpNo());
 			try (ResultSet rs = std.executeQuery()) {
 				if (rs.next()) {
@@ -75,7 +75,7 @@ public class EmployeeDaoImpl111111 implements EmployeeDao {
 	@Override
 	public int insertEmployee(Employee employee) {
 		String sql = "insert into employee values(?,?,?,?,?,?)";
-		try (Connection con = jdbcUtil.getConnection(); PreparedStatement std = con.prepareStatement(sql);) {
+		try (Connection con = jdbcConn.getConnection(); PreparedStatement std = con.prepareStatement(sql);) {
 			std.setInt(1, employee.getEmpNo());
 			std.setString(2, employee.getEmpName());
 			std.setInt(3, employee.getTitle().gettNo());
@@ -92,7 +92,7 @@ public class EmployeeDaoImpl111111 implements EmployeeDao {
 	@Override
 	public int updateEmployee(Employee employee) {
 		String sql = "update employee set empName = ? where empNo = ?";
-		try (Connection con = jdbcUtil.getConnection(); PreparedStatement std = con.prepareStatement(sql)) {
+		try (Connection con = jdbcConn.getConnection(); PreparedStatement std = con.prepareStatement(sql)) {
 			std.setString(1, employee.getEmpName());
 			std.setInt(2, employee.getEmpNo());
 			return std.executeUpdate();
@@ -105,7 +105,7 @@ public class EmployeeDaoImpl111111 implements EmployeeDao {
 	@Override
 	public int deleteEmployee(int empNo) {
 		String sql = "delete  from employee  where empNo =?";
-		try (Connection con = jdbcUtil.getConnection(); PreparedStatement std = con.prepareStatement(sql)) {
+		try (Connection con = jdbcConn.getConnection(); PreparedStatement std = con.prepareStatement(sql)) {
 			std.setInt(1, empNo);
 			return std.executeUpdate();
 		} catch (SQLException e) {

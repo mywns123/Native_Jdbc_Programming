@@ -38,7 +38,7 @@ public class jdbcUtilTest {
 	@Test
 	public void testGetConnection() {//3
 		System.out.printf("%s()%n","testGetConnection");
-		Connection con =jdbcUtil.getConnection();
+		Connection con =jdbcConn.getConnection();
 		System.out.println("con > " + con);
 		Assert.assertNotNull(con);
 	}

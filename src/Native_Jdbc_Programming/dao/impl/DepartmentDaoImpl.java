@@ -9,7 +9,7 @@ import java.util.List;
 
 import Native_Jdbc_Programming.dao.DepartmentDao;
 import Native_Jdbc_Programming.dto.Department;
-import Native_Jdbc_Programming.util.jdbcUtil;
+import Native_Jdbc_Programming.util.jdbcConn;
 
 public class DepartmentDaoImpl implements DepartmentDao {
 
@@ -25,7 +25,7 @@ public class DepartmentDaoImpl implements DepartmentDao {
 	@Override
 	public List<Department> selectDepartmentByAll() {
 		String sql = "select deptNO,deptName,floor from department";
-		try (Connection con = jdbcUtil.getConnection();
+		try (Connection con = jdbcConn.getConnection();
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery()) {
 			if (rs.next()) {
@@ -52,7 +52,7 @@ public class DepartmentDaoImpl implements DepartmentDao {
 	@Override
 	public Department selectDepartmentByNo(Department department) {
 		String sql = "select deptNO,deptName,floor from department where deptNO = ?";
-		try (Connection con = jdbcUtil.getConnection();
+		try (Connection con = jdbcConn.getConnection();
 			PreparedStatement pstmt = con.prepareStatement(sql)) {
 			pstmt.setInt(1, department.getDeptno());
 			try (ResultSet rs = pstmt.executeQuery()) {
@@ -69,7 +69,7 @@ public class DepartmentDaoImpl implements DepartmentDao {
 	@Override
 	public int insertDepartment(Department department) {
 		String sql = "insert into Department values(?,?,?)";
-		try (Connection con = jdbcUtil.getConnection();
+		try (Connection con = jdbcConn.getConnection();
 			PreparedStatement pstmt = con.prepareStatement(sql)) {
 			pstmt.setInt(1, department.getDeptno());
 			pstmt.setString(2, department.getDeptName());
@@ -84,7 +84,7 @@ public class DepartmentDaoImpl implements DepartmentDao {
 	@Override
 	public int updateDepartment(Department department) {
 		String sql = "update  Department  set DeptName =? where Deptno =?";
-		try (Connection con = jdbcUtil.getConnection();
+		try (Connection con = jdbcConn.getConnection();
 			PreparedStatement pstmt = con.prepareStatement(sql)) {
 			pstmt.setString(1, department.getDeptName());
 			pstmt.setInt(2, department.getDeptno());
@@ -98,7 +98,7 @@ public class DepartmentDaoImpl implements DepartmentDao {
 	@Override
 	public int deleteDepartment(int deptno) {
 		String sql = "delete  from Department where Deptno=?";
-		try (Connection con = jdbcUtil.getConnection();
+		try (Connection con = jdbcConn.getConnection();
 			PreparedStatement pstmt = con.prepareStatement(sql)) {
 			pstmt.setInt(1, deptno);
 			return pstmt.executeUpdate();

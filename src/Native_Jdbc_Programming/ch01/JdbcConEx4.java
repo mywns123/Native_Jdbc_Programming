@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import Native_Jdbc_Programming.dto.Department;
-import Native_Jdbc_Programming.util.jdbcUtil;
+import Native_Jdbc_Programming.util.jdbcConn;
 
 public class JdbcConEx4 {
 	/**
@@ -19,7 +19,7 @@ public class JdbcConEx4 {
 		
 		String sql = "select deptno, deptName, floor from department";
 		
-		try (	Connection con = jdbcUtil.getConnection();
+		try (	Connection con = jdbcConn.getConnection();
 				Statement stmt = con.createStatement();
 				ResultSet rs = stmt.executeQuery(sql);
 				)

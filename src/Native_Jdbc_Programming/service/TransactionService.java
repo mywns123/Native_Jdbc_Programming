@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 import Native_Jdbc_Programming.dto.Department;
 import Native_Jdbc_Programming.dto.Title;
-import Native_Jdbc_Programming.util.jdbcUtil;
+import Native_Jdbc_Programming.util.jdbcConn;
 
 public class TransactionService {
 
@@ -18,7 +18,7 @@ public class TransactionService {
 		PreparedStatement dPstmt = null;
 		String res = null;
 		try {
-			con = jdbcUtil.getConnection();
+			con = jdbcConn.getConnection();
 			con.setAutoCommit(false);
 			tPstmt = con.prepareStatement(titlesql);
 			tPstmt.setInt(1, title.gettNo());
@@ -75,7 +75,7 @@ public class TransactionService {
 		PreparedStatement dPstmt = null;
 		int res = 0;
 		try {
-			con = jdbcUtil.getConnection();
+			con = jdbcConn.getConnection();
 			con.setAutoCommit(false);
 
 			System.out.println("res > " + res);
